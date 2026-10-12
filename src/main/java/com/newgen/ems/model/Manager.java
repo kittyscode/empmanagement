@@ -2,9 +2,10 @@ package com.newgen.ems.model;
 
 public class Manager  extends Employee implements Promotable{
 
+    private static final boolean active = true;
     private int teamsize;
 
-    public Manager(int id, String name, String department, double baseSalary, boolean active, int teamsize) {
+    public Manager(int id, String name, String department, double baseSalary, int teamsize) {
         super(id, name, department, baseSalary, active);
         this.teamsize = teamsize;
     }

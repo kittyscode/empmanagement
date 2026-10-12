@@ -1,18 +1,18 @@
 package com.newgen.ems.model;
 
-public abstract class Employee implements Payable{
+public abstract class Employee implements Payable {
     private final int id;
     private final String name;
     private String department;
     protected double baseSalary;
     private boolean active;
 
-    public Employee(int id, String name, String department , double baseSalary , boolean active) {
+    public Employee(int id, String name, String department, double baseSalary, boolean active) {
         this.id = id;
         this.name = name;
         this.department = department;
         this.baseSalary = baseSalary;
-        this.active = true;
+        this.active = active;
     }
 
     public int getId() {
@@ -51,7 +51,8 @@ public abstract class Employee implements Payable{
     public abstract String designation();
 
     @Override
-    public  double calculateMonthlySalary() {
+    public double calculateMonthlySalary() {
         return baseSalary;
     }
+
 }

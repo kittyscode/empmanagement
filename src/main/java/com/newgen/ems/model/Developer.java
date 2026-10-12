@@ -3,8 +3,8 @@ package com.newgen.ems.model;
 public class Developer extends Employee implements Promotable{
     private String primaryLanguage;
 
-    public Developer(int id, String name, String department, double baseSalary, boolean active, String primaryLanguage) {
-        super(id, name, department, baseSalary, active);
+    public Developer(int id, String name, String department, double baseSalary, String primaryLanguage) {
+        super(id, name, department, baseSalary, true);
         this.primaryLanguage = primaryLanguage;
     }
 

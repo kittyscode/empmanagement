@@ -4,6 +4,8 @@ import com.newgen.ems.model.Employee;
 
 import java.util.Arrays;
 
+
+
 public class EmployeeRepository {
     private Employee[] employees;
     private int count;
@@ -25,13 +27,26 @@ public class EmployeeRepository {
 
         }
 
-        public Employee findById(int id){
+        private Employee search(int id){
             for(int i=0;i<count;i++){
                 if(employees[i].getId()==id){
                     return employees[i];
                 }
             }
             return null;
+
+        }
+
+        public Employee findById(int id){
+
+            Employee employee=search(id);
+            if(employee!=null){
+                throw new EmployeeNotFoundException("No employee with id "+id);
+
+            }
+            return employee;
+
+
         }
         public Employee[] findAll(){
         return Arrays.copyOf(employees,count);
