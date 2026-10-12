@@ -94,9 +94,16 @@ public class Main {
                    case 1 -> addEmployeeFromConsole(sc, employeeRepository);
 
                    case 2 -> {
+
                        System.out.println("Enter Employee id: ");
-                       int id = sc.nextInt();
-                       printPayslip(employeeRepository.findById(id));
+                       try{
+                           int id =sc.nextInt();
+                           printPayslip(employeeRepository.findById(id));
+                       }
+                       catch(EmployeeNotFoundException e){
+                           System.out.println(e.getMessage());
+                       }
+
 
                    }
                    case 3 -> {
@@ -174,7 +181,4 @@ public class Main {
                employee.calculateMonthlySalary());
        System.out.println(payslip);
     }
-
-
-
 }

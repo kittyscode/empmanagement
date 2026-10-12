@@ -15,16 +15,25 @@ public class EmployeeRepository {
         this.employees = new Employee[initialCapacity];
         this.count = 0;
     }
-            public void add(Employee employee ){
-            if(count== employees.length){
+    public void add(Employee employee ){
+
+
+        if(employee==null){
+           System.out.println("Employee is null");
+        }
+
+        if(search(employee.getId())!=null){
+                    throw new DuplicateEmployeeIdException("employee Id "+employee.getId()+" Already exists");
+        }
+
+
+        if(count== employees.length){
                 int newCapacity = employees.length*2;
                 System.out.printf("Reposotory full (capacity %d) -- growing to %d.%n",employees.length,newCapacity);
                 employees = Arrays.copyOf(employees, newCapacity);
-                }
-            employees[count]=employee;
-            count++;
-
-
+        }
+        employees[count]=employee;
+        count++;
         }
 
         private Employee search(int id){
@@ -37,10 +46,10 @@ public class EmployeeRepository {
 
         }
 
-        public Employee findById(int id){
+        public Employee findById(int id) throws EmployeeNotFoundException {
 
             Employee employee=search(id);
-            if(employee!=null){
+            if(employee==null){
                 throw new EmployeeNotFoundException("No employee with id "+id);
 
             }
